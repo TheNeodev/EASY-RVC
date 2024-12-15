@@ -194,7 +194,7 @@ with gr.Blocks(theme=gr.themes.Base()) as app:
             show_file_upload_button.click(swap_visibility, outputs=[file_upload_col, yt_link_col, song_input, local_file])
             show_yt_link_button.click(swap_visibility, outputs=[yt_link_col, file_upload_col, song_input, local_file])
 
-            clear_btn = gr.ClearButton(value='Clear', components=[song_input, rvc_model, keep_files, local_file])
+            
             with gr.Column():
                 with gr.Accordion(label="Feature Settings", open=False):
                     index_rate = gr.Slider(0, 1, value=0.5, label='Index Rate', info="Controls how much of the AI voice's accent to keep in the vocals")
@@ -202,6 +202,7 @@ with gr.Blocks(theme=gr.themes.Base()) as app:
                     rms_mix_rate = gr.Slider(0, 1, value=0.25, label='RMS mix rate', info="Control how much to mimic the original vocal's loudness (0) or a fixed loudness (1)")
                     protect = gr.Slider(0, 0.5, value=0.33, label='Protect rate', info='Protect voiceless consonants and breath sounds. Set to 0.5 to disable.')
                 with gr.Row():
+                    
                     ai_cover = gr.Audio(label='Output Audio (Click on the Three Dots in the Right Corner to Download)', show_share_button=False)
                     
                 with gr.Row():
@@ -210,6 +211,7 @@ with gr.Blocks(theme=gr.themes.Base()) as app:
                     f0_method.change(show_hop_slider, inputs=f0_method, outputs=crepe_hop_length)
                 keep_files = gr.Checkbox(label='Keep intermediate files', info='Keep all audio files generated in the song_output/id directory, e.g. Isolated Vocals/Instrumentals. Leave unchecked to save space')
 
+        clear_btn = gr.ClearButton(value='Clear', components=[song_input, rvc_model, keep_files, local_file])
         with gr.Row():
             output_format = gr.Dropdown(['mp3', 'wav'], value='mp3', label='Output file type', info='mp3: small file size, decent quality. wav: Large file size, best quality')
         with gr.Row():
