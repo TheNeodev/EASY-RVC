@@ -216,7 +216,7 @@ with gr.Blocks(theme=gr.themes.Base()) as app:
                 https://github.com/RVC-Project/Retrieval-based-Voice-Conversion-WebUI
                 """)
         
-      ref_btn.click(update_models_list, None, outputs=[rvc_model])
+      ref_btn.click(update_models_list, inputs=None, outputs=rvc_model)
       is_webui = gr.Number(value=1, visible=False)
       generate_btn.click(song_cover_pipeline,
                          inputs=[song_input, rvc_model, pitch, keep_files, is_webui, main_gain, backup_gain,
