@@ -223,12 +223,12 @@ with gr.Blocks(theme=gr.themes.Base()) as app:
     ref_btn.click(update_models_list, inputs=None, outputs=rvc_model)
     is_webui = gr.Number(value=1, visible=False)
     generate_btn.click(song_cover_pipeline,
-                       inputs=[song_input, rvc_model, pitch, keep_files, is_webui, main_gain, backup_gain,
-                               inst_gain, index_rate, filter_radius, rms_mix_rate, f0_method, crepe_hop_length,
-                                protect, pitch_all,output_format],
-                        outputs=[ai_cover])
+                       inputs=[song_input, rvc_model, pitch, keep_files, is_webui,
+                               index_rate, filter_radius, rms_mix_rate, f0_method, crepe_hop_length,
+                               protect, pitch_all,output_format],
+                       outputs=[ai_cover])
     clear_btn.click(lambda: [0, 0, 0, 0, 0.5, 3, 0.25, 0.33, 'rmvpe', 128, 0, 0.15, 0.2, 0.8, 0.7, 'mp3', None],
-                    outputs=[pitch, main_gain, backup_gain, inst_gain, index_rate, filter_radius, rms_mix_rate,
+                    outputs=[pitch, index_rate, filter_radius, rms_mix_rate,
                              protect, f0_method, crepe_hop_length, pitch_all,                       
                              output_format, ai_cover])
     with gr.Tab("Download Model"):
