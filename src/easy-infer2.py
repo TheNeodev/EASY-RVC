@@ -241,5 +241,6 @@ with gr.Blocks(theme=gr.themes.Base()) as app:
             status_bar=gr.Textbox(label="")
             download_button.click(download_online_model, inputs=[url, model], outputs=status_bar)
 
+    app.queue()
     app.launch(share=True, debug=True)
         
